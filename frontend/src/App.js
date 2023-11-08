@@ -4,6 +4,7 @@ import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { AdminPage } from './pages/AdminPage/AdminPage';
 import { AppointmentsPage } from './pages/AppointmentsPage/AppointmentsPage';
+import { StartPage } from './pages/StartPage/StartPage';
 
 
 
@@ -13,6 +14,7 @@ const App = () => {
     <Router>
       <div>
         <Routes>
+        <Route path="/" element={<StartPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminPage />} />
