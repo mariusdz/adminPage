@@ -1,61 +1,57 @@
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const { email, password } = formData;
-    const adminData = JSON.parse(localStorage.getItem('adminData'));
-    if (adminData && adminData.email === email && adminData.password === password) {
-      alert('Login successful!');
+
+    const storedData = JSON.parse(localStorage.getItem('adminData'));
+    if (storedData && storedData.email === email && storedData.password === password) {
+      navigate('/admin');
     } else {
       alert('Invalid email or password. Please try again.');
     }
   };
 
   return (
-    <Form onSubmit={handleLogin}>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Login
-      </Button>
-    </Form>
+    <div className="container mt-5">
+      <h1>Login Page</h1>
+      <form>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">Password:</label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
+
+
 

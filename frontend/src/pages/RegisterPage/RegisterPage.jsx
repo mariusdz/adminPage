@@ -25,61 +25,65 @@ export const RegisterPage = () => {
   };
 
   return (
-    <Form onSubmit={handleRegister}>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+    <div className="container mt-5">
+      <h1>Register page</h1>
+      <Form onSubmit={handleRegister}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+        <Form.Group controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicSurname">
-        <Form.Label>Surname</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter surname"
-          name="surname"
-          value={formData.surname}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+        <Form.Group controlId="formBasicSurname">
+          <Form.Label>Surname</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter surname"
+            name="surname"
+            value={formData.surname}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Register
-      </Button>
-    </Form>
+        <Button className='mt-3' variant="primary" type="submit">
+          Register
+        </Button>
+      </Form>
+    </div>
   );
 };
+
 
 
       
