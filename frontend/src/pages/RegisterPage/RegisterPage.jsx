@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +9,8 @@ export const RegisterPage = () => {
     surname: '',
     password: '',
   });
-
+  
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -22,6 +24,12 @@ export const RegisterPage = () => {
     const { email, password } = formData;
     localStorage.setItem('adminData', JSON.stringify({ email, password }));
     alert('Registration successful!');
+    const storedData = JSON.parse(localStorage.getItem('adminData'));
+    if (storedData && storedData.email === email && storedData.password === password) {
+      navigate('/admin');
+    } else {
+      alert('Invalid email or password. Please try again.');
+    }
   };
 
   return (
